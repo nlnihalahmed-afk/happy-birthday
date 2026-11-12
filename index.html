@@ -110,8 +110,42 @@
         <span class="absolute right-14 top-3 px-3 py-1 rounded-md glass-card text-xs text-pink-200 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Toggle Soundscape</span>
     </button>
 
+    <!-- ================= SECTION 0: PASSCODE VERIFICATION GATE ================= -->
+    <section id="authSection" class="relative z-50 min-h-screen flex flex-col justify-center items-center px-4 text-center">
+        <div class="absolute w-72 h-72 md:w-96 md:h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="glass-card rounded-3xl p-8 md:p-12 max-w-md w-full relative border border-pink-500/30 shadow-2xl">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 border border-pink-400/30 flex items-center justify-center text-pink-400 text-3xl mx-auto mb-6 shadow-inner animate-pulse">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            
+            <h2 class="text-2xl md:text-3xl font-cinzel font-bold text-white mb-2">
+                Who is NL? 🔐
+            </h2>
+            <p class="text-slate-300 text-sm mb-6">
+                Please enter the correct name to unlock this secret birthday world!
+            </p>
+
+            <form onsubmit="verifyPasscode(event)" class="space-y-4">
+                <div class="relative">
+                    <input type="text" id="passcodeInput" placeholder="Enter name here..." autocomplete="off"
+                        class="w-full px-5 py-3 rounded-xl bg-slate-900/60 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/30 text-center text-base transition-all">
+                </div>
+                
+                <button type="submit" class="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold text-sm shadow-lg hover:brightness-110 transition-all flex items-center justify-center gap-2">
+                    <span>Unlock Surprise</span>
+                    <i class="fas fa-key"></i>
+                </button>
+            </form>
+
+            <p id="errorMsg" class="text-rose-400 text-xs mt-4 hidden font-medium animate-bounce leading-relaxed">
+                ❌ ভুল নাম! বল তো কার ছোট ভাইকে তুমি অনেক ভালোবাসো? 😉
+            </p>
+        </div>
+    </section>
+
     <!-- ================= SECTION 1: PRELUDE / GIFT UNLOCK SCREEN ================= -->
-    <section id="heroSection" class="relative z-20 min-h-screen flex flex-col justify-center items-center px-4 text-center">
+    <section id="heroSection" class="relative z-20 min-h-screen flex flex-col justify-center items-center px-4 text-center hidden opacity-0 transition-opacity duration-700">
         <!-- Ambient Glowing Halos -->
         <div class="absolute w-72 h-72 md:w-96 md:h-96 bg-pink-600/20 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute w-72 h-72 md:w-96 md:h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none translate-x-12 translate-y-12"></div>
@@ -188,7 +222,7 @@
                 </div>
 
                 <div class="mt-8 pt-6 border-t border-slate-700/60 flex justify-between items-center text-xs md:text-sm text-slate-400">
-                    <span>With infinite gratitude & respect 💖</span>
+                    <span>With infinite gratitude & love 💖</span>
                     <div class="flex flex-col items-center">
                         <span class="font-cursive text-3xl text-pink-300">Your Friend</span>
                         <span class="font-cursive text-2xl text-amber-300">NL</span>
@@ -308,6 +342,37 @@
         </div>
     </div>
 
+    <!-- ================= MODAL FOR SECRET MESSAGE QUESTION TWIST ================= -->
+    <div id="secretVerifyModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 px-4">
+        <div class="glass-card rounded-3xl p-8 max-w-md w-full relative border border-pink-500/40 text-center shadow-2xl">
+            <button onclick="closeSecretVerifyModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500/20 to-amber-500/20 border border-pink-400/30 flex items-center justify-center text-amber-300 text-3xl mx-auto mb-4 shadow-inner">
+                <i class="fas fa-question-circle animate-pulse"></i>
+            </div>
+            <h3 class="text-xl font-cinzel font-bold text-white mb-2">
+                Secret Challenge! 🤫
+            </h3>
+            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                তুমি যে NL কে তোমার ছোটবেলার বন্ধু বলো.. তো বলো দেখি তার সাথে তোমার প্রথম কোন ক্লাসে দেখা হয়েছিল?
+            </p>
+
+            <form onsubmit="verifySecretAnswer(event)" class="space-y-4">
+                <input type="text" id="secretAnswerInput" placeholder="Type answer here..." autocomplete="off"
+                    class="w-full px-5 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/30 text-center text-sm transition-all">
+                
+                <button type="submit" class="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold text-sm shadow-lg hover:brightness-110 transition-all">
+                    Submit Answer ✨
+                </button>
+            </form>
+
+            <p id="secretErrorMsg" class="text-rose-400 text-xs mt-3 hidden font-medium animate-bounce">
+                ❌ ভুল উত্তর! আবার চেষ্টা করো।
+            </p>
+        </div>
+    </div>
+
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
         /* 
@@ -358,7 +423,7 @@
             // Your Secret Message injected here:
             secretMessage: {
                 icon: "fas fa-heart",
-                title: "A Special Note For You",
+                title: "A Special Note For You 💌",
                 message: `Hey Dost 😎🥺,, Ami etao jani na tui ki adow eta portecot kina. Coto koira sun ami tore bigoto dui arai bocore ekta kotha chapaia rakhcilam. last practical er din koite chaicilam but tor sather maia gular jonno bolte pari nai. Koite chaicilam na kokhonoi. Kintu kew ekjon koicilo amake na bolar je ekta apsos seta thaika jaibo sara jibon. Setao aro onek age. Kintu kotha ta bolar age eta jene rakh ami keno bolte pari nai janos..? Tor jonno.! Tor jonnoi ami eta bolte pari nai. Amaro dosh ace, amre jodi kew bissas kore ami amr sobta die ota rakhar try kori. Ami jani na ami tor kace kotota meaningful but amar kace fill hoicilo tor amar proti akta bissas cilo. like, " maybe you fell comfort. ektu khule bolle ki amr tor proti ui intention hobe na." Eta amar mone hoicilo but to be a great bond, ami kokhono ar boli nai. Jodio cele manusher mukhe ei gula kotha jae na. tau na hoe bollam. Contact rakhic, and chill. Pera nai, cz jeta bolar cilo ota bolte ekhono pari nai. My time is so over. Best of luck. Biar dauat ta jeno pai. By the way, remind your mom about me and my salam, "Accalamu Alaikum". Best of Luck for life line and 'Allah Hafiz'. Happy Birthday once again! ✨`
             }
         };
@@ -383,6 +448,43 @@
             `;
             cardsGrid.innerHTML += cardHtml;
         });
+
+        /* ================= PASSCODE VERIFICATION LOGIC ================= */
+        function verifyPasscode(event) {
+            event.preventDefault();
+            const inputVal = document.getElementById('passcodeInput').value.trim().toLowerCase();
+            const errorMsg = document.getElementById('errorMsg');
+
+            const validNames = ["nihal", "nl nihal ahmed", "nl nihal", "nl", "nihal ahmed"];
+            const isMatch = validNames.some(name => inputVal.includes(name));
+
+            if (isMatch || inputVal.includes("nihal")) {
+                playChimeSound();
+                confetti({
+                    particleCount: 80,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+
+                const authSection = document.getElementById('authSection');
+                const heroSection = document.getElementById('heroSection');
+
+                authSection.classList.add('transition-all', 'duration-700', 'opacity-0', 'scale-95');
+
+                setTimeout(() => {
+                    authSection.classList.add('hidden');
+                    heroSection.classList.remove('hidden');
+                    void heroSection.offsetWidth;
+                    heroSection.classList.remove('opacity-0');
+                }, 700);
+            } else {
+                errorMsg.classList.remove('hidden');
+                document.getElementById('passcodeInput').classList.add('border-rose-500', 'animate-shake');
+                setTimeout(() => {
+                    document.getElementById('passcodeInput').classList.remove('border-rose-500', 'animate-shake');
+                }, 500);
+            }
+        }
 
         /* ================= WEB AUDIO SYNTHESIZER ================= */
         let audioCtx = null;
@@ -518,15 +620,54 @@
             modal.classList.remove('opacity-0', 'pointer-events-none');
         }
 
+        // Trigger Secret Challenge Modal instead of opening message directly
         function openSecretModal() {
             playChimeSound();
-            const data = CONFIG.secretMessage;
-            document.getElementById('modalIcon').className = data.icon;
-            document.getElementById('modalTitle').innerText = data.title;
-            document.getElementById('modalBody').innerText = data.message;
+            const verifyModal = document.getElementById('secretVerifyModal');
+            verifyModal.classList.remove('opacity-0', 'pointer-events-none');
+        }
 
-            const modal = document.getElementById('memoryModal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
+        function closeSecretVerifyModal() {
+            const verifyModal = document.getElementById('secretVerifyModal');
+            verifyModal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Verify Secret Question Answer ("3", "three", "class 3", "class three")
+        function verifySecretAnswer(event) {
+            event.preventDefault();
+            const inputVal = document.getElementById('secretAnswerInput').value.trim().toLowerCase();
+            const errorMsg = document.getElementById('secretErrorMsg');
+
+            const validAnswers = ["3", "three", "class 3", "class three"];
+            const isCorrect = validAnswers.some(ans => inputVal === ans);
+
+            if (isCorrect) {
+                playChimeSound();
+                confetti({
+                    particleCount: 60,
+                    spread: 60,
+                    origin: { y: 0.6 }
+                });
+
+                // Close verification modal and open secret message modal
+                closeSecretVerifyModal();
+                document.getElementById('secretAnswerInput').value = "";
+                errorMsg.classList.add('hidden');
+
+                const data = CONFIG.secretMessage;
+                document.getElementById('modalIcon').className = data.icon;
+                document.getElementById('modalTitle').innerText = data.title;
+                document.getElementById('modalBody').innerText = data.message;
+
+                const modal = document.getElementById('memoryModal');
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                errorMsg.classList.remove('hidden');
+                document.getElementById('secretAnswerInput').classList.add('border-rose-500', 'animate-shake');
+                setTimeout(() => {
+                    document.getElementById('secretAnswerInput').classList.remove('border-rose-500', 'animate-shake');
+                }, 500);
+            }
         }
 
         function closeModal() {
