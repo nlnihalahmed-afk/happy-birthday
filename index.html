@@ -188,7 +188,7 @@
                 </div>
 
                 <div class="mt-8 pt-6 border-t border-slate-700/60 flex justify-between items-center text-xs md:text-sm text-slate-400">
-                    <span>With infinite gratitude & love 💖</span>
+                    <span>With infinite gratitude & respect 💖</span>
                     <div class="flex flex-col items-center">
                         <span class="font-cursive text-3xl text-pink-300">Your Friend</span>
                         <span class="font-cursive text-2xl text-amber-300">NL</span>
@@ -293,7 +293,7 @@
 
     <!-- Modal for Memory Capsule & Secret Message Details -->
     <div id="memoryModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 px-4">
-        <div class="glass-card rounded-3xl p-8 max-w-lg w-full relative border border-pink-400/30 text-center">
+        <div class="glass-card rounded-3xl p-8 max-w-lg w-full relative border border-pink-400/30 text-center max-h-[85vh] overflow-y-auto">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
                 <i class="fas fa-times"></i>
             </button>
@@ -301,7 +301,7 @@
                 <i id="modalIcon" class="fas fa-star"></i>
             </div>
             <h3 id="modalTitle" class="text-2xl font-cinzel font-bold text-white mb-3"></h3>
-            <p id="modalBody" class="text-slate-200 leading-relaxed text-sm md:text-base mb-6"></p>
+            <p id="modalBody" class="text-slate-200 leading-relaxed text-sm md:text-base mb-6 text-left whitespace-pre-line"></p>
             <button onclick="closeModal()" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium text-sm shadow-lg hover:brightness-110 transition-all">
                 Close & Keep Celebrating ✨
             </button>
@@ -313,7 +313,6 @@
         /* 
         ========================================================================
         EASY EDITING CONFIGURATION
-        Customize your friend's name, lines, cards, and secret message right here!
         ========================================================================
         */
         const CONFIG = {
@@ -355,11 +354,12 @@
                     fullDetail: "I believe in your potential more than words can say. I'll always be in your corner cheering loud for every victory you achieve!"
                 }
             ],
-            // EDIT YOUR SECRET MESSAGE HERE
+            
+            // Your Secret Message injected here:
             secretMessage: {
                 icon: "fas fa-heart",
-                title: "Just For You 🌺",
-                message: "Hey Dost 😎🥺,, Ami etao jani na tui ki adow eta portecot kina. Coto koira sun ami tore bigoto dui arai bocore ekta kotha chapaia rakhcilam. last practical er din koite chaicilam but tor sather maia gular jonno bolte pari nai. Koite chaicilam na kokhonoi. Kintu kew ekjon koicilo amake na bolar je ekta apsos seta thaika jaibo sara jibon. Setao aro onek age. Kintu kotha ta bolar age eta jene rakh ami keno bolte pari nai janos..? Tor jonno.! Tor jonnoi ami eta bolte pari nai. Amaro dosh ace, amre jodi kew bissas kore ami amr sobta die ota rakhar try kori. Ami jani na ami tor kace kotota meaningful but amar kace fill hoicilo tor amar proti akta bissas cilo. like, " maybe you fell comfort. ektu khule bolle ki amr tor proti ui intention hobe na." Eta amar mone hoicilo but to be a great bond, ami kokhono ar boli nai. Jodio cele manusher mukhe ei gula kotha jae na. tau na hoe bollam. Contact rakhic, and chill. Pera nai, cz jeta bolar cilo ota bolte ekhono pari nai. My time is so over. Best of luck. Biar dauat ta jeno pai. By the way, remind your mom about me and my salam, "Accalamu Alaikum". Best of Luck for life line and 'Allah Hafiz'. Happy Birthday once again! ✨"
+                title: "A Special Note For You",
+                message: `Hey Dost 😎🥺,, Ami etao jani na tui ki adow eta portecot kina. Coto koira sun ami tore bigoto dui arai bocore ekta kotha chapaia rakhcilam. last practical er din koite chaicilam but tor sather maia gular jonno bolte pari nai. Koite chaicilam na kokhonoi. Kintu kew ekjon koicilo amake na bolar je ekta apsos seta thaika jaibo sara jibon. Setao aro onek age. Kintu kotha ta bolar age eta jene rakh ami keno bolte pari nai janos..? Tor jonno.! Tor jonnoi ami eta bolte pari nai. Amaro dosh ace, amre jodi kew bissas kore ami amr sobta die ota rakhar try kori. Ami jani na ami tor kace kotota meaningful but amar kace fill hoicilo tor amar proti akta bissas cilo. like, " maybe you fell comfort. ektu khule bolle ki amr tor proti ui intention hobe na." Eta amar mone hoicilo but to be a great bond, ami kokhono ar boli nai. Jodio cele manusher mukhe ei gula kotha jae na. tau na hoe bollam. Contact rakhic, and chill. Pera nai, cz jeta bolar cilo ota bolte ekhono pari nai. My time is so over. Best of luck. Biar dauat ta jeno pai. By the way, remind your mom about me and my salam, "Accalamu Alaikum". Best of Luck for life line and 'Allah Hafiz'. Happy Birthday once again! ✨`
             }
         };
 
